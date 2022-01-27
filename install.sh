@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cache_enabled="${CACHE:-1}"
+ignore_flatpak_mismatch="${IGNORE_FLATPAK_MISMATCH:-0}"
 
 set -eu
 set -o pipefail
@@ -62,9 +63,11 @@ source "$step/load_gameinfo.sh"
 
 install_dir=$(source "$step/select_install_dir.sh")
 log_info "selected install directory '$install_dir'"
+# source "$step/verify_install_dir.sh"
 
 expect_exit=0
 
+# source "$step/configure_flatpak_permissions.sh"
 source "$step/download_external_resources.sh"
 source "$step/install_external_resources.sh"
 source "$step/install_nxm_handler.sh"

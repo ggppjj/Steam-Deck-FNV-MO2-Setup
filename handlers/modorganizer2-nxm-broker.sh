@@ -34,6 +34,7 @@ if [ "$process_search_status" == "0" ]; then
 	download_start_status=$?
 else
 	echo "INFO: starting Mod Organizer 2 to download '$nxm_link'"
+	# FIXME this will not work for the flatpak version of steam
 	download_start_output=$(steam -applaunch "$game_appid" "$nxm_link")
 	download_start_status=$?
 fi
